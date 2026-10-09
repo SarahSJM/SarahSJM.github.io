@@ -353,6 +353,13 @@
       border-left: 2px solid var(--soft-pink);
     }
 
+    /* Links styling */
+    .stay-list a, .travel-box a {
+      color: var(--sage-dark);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -386,14 +393,10 @@
         <ul class="nav-links">
           <li><a href="#welcome" class="active">Welcome</a></li>
           <li><a href="#our-story">Our Story</a></li>
-          <li><a href="#rsvp">RSVP</a></li>
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#places-to-stay">Places to Stay</a></li>
           <li><a href="#travel">Travel</a></li>
-          <li><a href="#wedding-party">Wedding Party</a></li>
-          <li><a href="#qa">Q & A</a></li>
-          <li><a href="#gift-list">Gift List</a></li>
-          <li><a href="#moments">Moments</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
         </ul>
       </nav>
     </header>
@@ -441,6 +444,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Our Story Section -->
+    <section id="our-story" style="text-align: center;">
+      <h2 class="section-title">Our Story</h2>
+      <div class="divider"></div>
+      
+      <img src="Proposal Photo.jpg" alt="Sarah and Scott" style="width: 100%; max-width: 500px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+      
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+          It all started in first year, sharing a flat as completely strict, sensible, totally-not-interested-in-each-other flatmates. That bulletproof friendship lasted until one fateful night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the dirty dishes and shared fridge space.
+        </p>
+        
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+          Naturally, we did the most rational thing possible: initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, dropped the secret agent act, and admitted to everyone—and ourselves—that we were head over heels in love.
+        </p>
+      </div>
+    </section>
 
     <!-- Key Details Section -->
     <section id="schedule">
@@ -505,6 +526,54 @@
       </div>
     </section>
 
+    <!-- Places to Stay Section -->
+    <section id="places-to-stay">
+      <h2 class="section-title">Places to Stay</h2>
+      <div class="divider"></div>
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="margin-bottom: 2rem;">Here are a few recommended accommodation options nearby for your stay:</p>
+        
+        <ul class="stay-list" style="list-style: none; padding: 0; line-height: 2.2; margin-bottom: 2.5rem; font-size: 1.05rem;">
+          <li>🏡 <strong>Laurel Bank, Markinch:</strong> <a href="https://www.laurelbankhotel.co.uk/" target="_blank" rel="noopener">Visit Website</a></li>
+          <li>🏨 <strong>Holiday Inn Express, Glenrothes:</strong> <a href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/glenrothes/glnuk/hoteldetail" target="_blank" rel="noopener">Visit Website</a></li>
+          <li>🏨 <strong>Premier Inn, Glenrothes:</strong> <a href="https://www.premierinn.com/gb/en/hotels/scotland/fife/glenrothes/glenrothes.html" target="_blank" rel="noopener">Visit Website</a></li>
+        </ul>
+
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
+          Travelling in a larger group or looking for extra space? You can check out local homes on <a href="https://www.airbnb.com" target="_blank" rel="noopener">Airbnb</a> or search for additional options on <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Travel Section -->
+    <section id="travel" class="travel-box">
+      <h2 class="section-title">Travel & Transport</h2>
+      <div class="divider"></div>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">By Train</h3>
+        <p style="margin-bottom: 2rem;">
+          The nearest train station is <strong>Markinch Station</strong>, which has direct links from Edinburgh, Dundee, and Aberdeen. 
+          Balbirnie House is approximately a <strong>15 to 20-minute walk</strong> (around 0.8 miles) through the park grounds from the station.
+        </p>
+
+        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">Local Taxis</h3>
+        <p style="margin-bottom: 1rem;">If you prefer to grab a taxi from Markinch Station to Balbirnie, we recommend booking a local Glenrothes taxi in advance:</p>
+        <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1.05rem;">
+          <li>🚕 <strong>Glenrothes Taxis:</strong> <a href="tel:01592751111">01592 751111</a></li>
+          <li>🚕 <strong>Deans Taxis:</strong> <a href="tel:01592759000">01592 759000</a></li>
+          <li>🚕 <strong>Kip Taxis:</strong> <a href="tel:01592752222">01592 752222</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" style="text-align: center;">
+      <h2 class="section-title">RSVP</h2>
+      <div class="divider"></div>
+      <p>Formal invitations and RSVP details will follow soon!</p>
+    </section>
+
     <!-- Footer -->
     <footer>
       <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
@@ -514,7 +583,7 @@
 
   <script>
     // --- PASSWORD CHECK LOGIC ---
-    const CORRECT_PASSWORD = "Sarah&Scott2027"; // You can change your password here!
+    const CORRECT_PASSWORD = "Balbirnie2027"; 
 
     function checkPassword() {
       const userInput = document.getElementById("passInput").value;
