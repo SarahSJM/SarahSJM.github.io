@@ -161,16 +161,35 @@
       text-transform: uppercase;
       transition: color 0.3s ease;
       font-weight: 500;
+      cursor: pointer;
     }
 
     .nav-links a:hover, .nav-links a.active {
       color: var(--sage-dark);
+      border-bottom: 2px solid var(--sage-dark);
+      padding-bottom: 2px;
+    }
+
+    /* Tab Page System: Only the active tab is displayed */
+    .tab-page {
+      display: none;
+      min-height: 70vh;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .tab-page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Hero Section */
     .hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 75vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -249,6 +268,7 @@
       text-transform: uppercase;
       transition: all 0.3s ease;
       border: 1px solid var(--sage-dark);
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -285,7 +305,7 @@
 
     /* General Section Styling */
     section {
-      padding: 5rem 1.5rem;
+      padding: 4rem 1.5rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -353,7 +373,7 @@
       border-left: 2px solid var(--soft-pink);
     }
 
-    /* Links styling */
+    /* Link Styles */
     .stay-list a, .travel-box a {
       color: var(--sage-dark);
       font-weight: 600;
@@ -368,6 +388,7 @@
       border-top: 1px solid rgba(127, 160, 107, 0.15);
       font-size: 0.9rem;
       color: var(--text-muted);
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -387,192 +408,202 @@
   <!-- Main Website Content (Protected) -->
   <div id="main-content">
     
-    <!-- Navigation -->
+    <!-- Navigation Links -->
     <header>
       <nav>
         <ul class="nav-links">
-          <li><a href="#welcome" class="active">Welcome</a></li>
-          <li><a href="#our-story">Our Story</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#places-to-stay">Places to Stay</a></li>
-          <li><a href="#travel">Travel</a></li>
-          <li><a href="#rsvp">RSVP</a></li>
+          <li><a onclick="showTab('welcome')" id="nav-welcome" class="active">Welcome</a></li>
+          <li><a onclick="showTab('our-story')" id="nav-our-story">Our Story</a></li>
+          <li><a onclick="showTab('schedule')" id="nav-schedule">Schedule</a></li>
+          <li><a onclick="showTab('places-to-stay')" id="nav-places-to-stay">Places to Stay</a></li>
+          <li><a onclick="showTab('travel')" id="nav-travel">Travel</a></li>
+          <li><a onclick="showTab('rsvp')" id="nav-rsvp">RSVP</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <div class="hero" id="welcome">
-      
-      <!-- Left Floral Frame SVG -->
-      <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-      </svg>
+    <!-- PAGE 1: WELCOME / HOME -->
+    <div id="page-welcome" class="tab-page active">
+      <div class="hero">
+        <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+          <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+          <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+          <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+          <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+          <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+          <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+        </svg>
 
-      <!-- Right Floral Frame SVG -->
-      <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-      </svg>
+        <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+          <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+          <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+          <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+          <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+          <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+          <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+        </svg>
 
-      <div class="hero-content">
-        <p class="subtitle-top">We Are Getting Married!</p>
-        <h1>Sarah & Scott</h1>
-        <p class="date-badge">28 . 08 . 2027</p>
-        <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE</p>
-        <a href="#rsvp" class="btn">RSVP Now</a>
+        <div class="hero-content">
+          <p class="subtitle-top">We Are Getting Married!</p>
+          <h1>Sarah & Scott</h1>
+          <p class="date-badge">28 . 08 . 2027</p>
+          <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE</p>
+          <a onclick="showTab('rsvp')" class="btn">RSVP Now</a>
 
-        <!-- Live Countdown -->
-        <div class="countdown" id="timer">
-          <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
-          <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
-          <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
-          <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
+          <div class="countdown" id="timer">
+            <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
+            <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
+            <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
+            <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Our Story Section -->
-    <section id="our-story" style="text-align: center;">
-      <h2 class="section-title">Our Story</h2>
-      <div class="divider"></div>
-      
-      <img src="Proposal Photo.jpg" alt="Sarah and Scott" style="width: 100%; max-width: 500px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-      
-      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-          It all started in first year, sharing a flat as completely strict, sensible, totally-not-interested-in-each-other flatmates. That bulletproof friendship lasted until one fateful night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the dirty dishes and shared fridge space.
-        </p>
+    <!-- PAGE 2: OUR STORY -->
+    <div id="page-our-story" class="tab-page">
+      <section style="text-align: center;">
+        <h2 class="section-title">Our Story</h2>
+        <div class="divider"></div>
         
-        <p style="font-size: 1.1rem; line-height: 1.8;">
-          Naturally, we did the most rational thing possible: initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, dropped the secret agent act, and admitted to everyone—and ourselves—that we were head over heels in love.
-        </p>
-      </div>
-    </section>
-
-    <!-- Key Details Section -->
-    <section id="schedule">
-      <h2 class="section-title">The Big Day</h2>
-      <div class="divider"></div>
-      <div class="details-grid">
-        <div class="detail-card">
-          <h3>When</h3>
-          <p><strong>Saturday, 28th August 2027</strong></p>
-          <p>Ceremony begins at 1:30 PM</p>
-          <p>Carriages at Midnight</p>
-        </div>
-        <div class="detail-card">
-          <h3>Where</h3>
-          <p><strong>Balbirnie House Hotel</strong></p>
-          <p>Markinch, Glenrothes</p>
-          <p>Fife, KY7 6NE</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section>
-      <h2 class="section-title">Order of the Day</h2>
-      <div class="divider"></div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-time">1:00 PM</div>
-          <div class="timeline-desc">
-            <h4>Guest Arrival</h4>
-            <p>Welcome drinks in the Orangery</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">1:30 PM</div>
-          <div class="timeline-desc">
-            <h4>The Ceremony</h4>
-            <p>Exchanging our vows</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">2:30 PM</div>
-          <div class="timeline-desc">
-            <h4>Drinks & Photographs</h4>
-            <p>Canapés and lawn games</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">5:00 PM</div>
-          <div class="timeline-desc">
-            <h4>Wedding Breakfast</h4>
-            <p>Speeches and delicious food</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">8:00 PM</div>
-          <div class="timeline-desc">
-            <h4>Evening Reception</h4>
-            <p>Dancing & celebrations!</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Places to Stay Section -->
-    <section id="places-to-stay">
-      <h2 class="section-title">Places to Stay</h2>
-      <div class="divider"></div>
-      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <p style="margin-bottom: 2rem;">Here are a few recommended accommodation options nearby for your stay:</p>
+        <img src="Proposal Photo.jpg" alt="Sarah and Scott" style="width: 100%; max-width: 500px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         
-        <ul class="stay-list" style="list-style: none; padding: 0; line-height: 2.2; margin-bottom: 2.5rem; font-size: 1.05rem;">
-          <li>🏡 <strong>Laurel Bank, Markinch:</strong> <a href="https://www.laurelbankhotel.co.uk/" target="_blank" rel="noopener">Visit Website</a></li>
-          <li>🏨 <strong>Holiday Inn Express, Glenrothes:</strong> <a href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/glenrothes/glnuk/hoteldetail" target="_blank" rel="noopener">Visit Website</a></li>
-          <li>🏨 <strong>Premier Inn, Glenrothes:</strong> <a href="https://www.premierinn.com/gb/en/hotels/scotland/fife/glenrothes/glenrothes.html" target="_blank" rel="noopener">Visit Website</a></li>
-        </ul>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            It all started in first year, sharing a flat as completely strict, sensible, totally-not-interested-in-each-other flatmates with 2 of our closest friends. That bulletproof friendship lasted all year until one summer holidays night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the strict rules of do not date your flatmate.
+          </p>
+          
+          <p style="font-size: 1.1rem; line-height: 1.8;">
+            As we were licing together again in 2nd year, we naturally did the most rational thing possible: initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, and admitted to everyone—and ourselves—that this might be my person. 
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.8;">
+           And we are so happy to have you all here for the start of our forever!
+          </p>
+        </div>
+      </section>
+    </div>
 
-        <p style="font-size: 0.95rem; color: var(--text-muted);">
-          Travelling in a larger group or looking for extra space? You can check out local homes on <a href="https://www.airbnb.com" target="_blank" rel="noopener">Airbnb</a> or search for additional options on <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a>.
-        </p>
-      </div>
-    </section>
+    <!-- PAGE 3: SCHEDULE -->
+    <div id="page-schedule" class="tab-page">
+      <section>
+        <h2 class="section-title">The Big Day</h2>
+        <div class="divider"></div>
+        <div class="details-grid">
+          <div class="detail-card">
+            <h3>When</h3>
+            <p><strong>Saturday, 28th August 2027</strong></p>
+            <p>Ceremony begins at 1:30 PM</p>
+            <p>Carriages at Midnight</p>
+          </div>
+          <div class="detail-card">
+            <h3>Where</h3>
+            <p><strong>Balbirnie House Hotel</strong></p>
+            <p>Markinch, Glenrothes</p>
+            <p>Fife, KY7 6NE</p>
+          </div>
+        </div>
+      </section>
 
-    <!-- Travel Section -->
-    <section id="travel" class="travel-box">
-      <h2 class="section-title">Travel & Transport</h2>
-      <div class="divider"></div>
-      
-      <div style="max-width: 700px; margin: 0 auto;">
-        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">By Train</h3>
-        <p style="margin-bottom: 2rem;">
-          The nearest train station is <strong>Markinch Station</strong>, which has direct links from Edinburgh, Dundee, and Aberdeen. 
-          Balbirnie House is approximately a <strong>15 to 20-minute walk</strong> (around 0.8 miles) through the park grounds from the station.
-        </p>
+      <section>
+        <h2 class="section-title">Order of the Day</h2>
+        <div class="divider"></div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">1:00 PM</div>
+            <div class="timeline-desc">
+              <h4>Guest Arrival</h4>
+              <p>Welcome drinks in the Orangery</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">1:30 PM</div>
+            <div class="timeline-desc">
+              <h4>The Ceremony</h4>
+              <p>Exchanging our vows</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2:30 PM</div>
+            <div class="timeline-desc">
+              <h4>Drinks & Photographs</h4>
+              <p>Canapés and lawn games</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">5:00 PM</div>
+            <div class="timeline-desc">
+              <h4>Wedding Breakfast</h4>
+              <p>Speeches and delicious food</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">8:00 PM</div>
+            <div class="timeline-desc">
+              <h4>Evening Reception</h4>
+              <p>Dancing & celebrations!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">Local Taxis</h3>
-        <p style="margin-bottom: 1rem;">If you prefer to grab a taxi from Markinch Station to Balbirnie, we recommend booking a local Glenrothes taxi in advance:</p>
-        <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1.05rem;">
-          <li>🚕 <strong>Glenrothes Taxis:</strong> <a href="tel:01592751111">01592 751111</a></li>
-          <li>🚕 <strong>Deans Taxis:</strong> <a href="tel:01592759000">01592 759000</a></li>
-          <li>🚕 <strong>Kip Taxis:</strong> <a href="tel:01592752222">01592 752222</a></li>
-        </ul>
-      </div>
-    </section>
+    <!-- PAGE 4: PLACES TO STAY -->
+    <div id="page-places-to-stay" class="tab-page">
+      <section>
+        <h2 class="section-title">Places to Stay</h2>
+        <div class="divider"></div>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+          <p style="margin-bottom: 2rem;">Here are a few recommended accommodation options nearby for your stay:</p>
+          
+          <ul class="stay-list" style="list-style: none; padding: 0; line-height: 2.2; margin-bottom: 2.5rem; font-size: 1.05rem;">
+            <li>🏡 <strong>Laurel Bank, Markinch:</strong> <a href="https://www.laurelbankhotel.co.uk/" target="_blank" rel="noopener">Visit Website</a></li>
+            <li>🏨 <strong>Holiday Inn Express, Glenrothes:</strong> <a href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/glenrothes/glnuk/hoteldetail" target="_blank" rel="noopener">Visit Website</a></li>
+            <li>🏨 <strong>Premier Inn, Glenrothes:</strong> <a href="https://www.premierinn.com/gb/en/hotels/scotland/fife/glenrothes/glenrothes.html" target="_blank" rel="noopener">Visit Website</a></li>
+          </ul>
 
-    <!-- RSVP Section -->
-    <section id="rsvp" style="text-align: center;">
-      <h2 class="section-title">RSVP</h2>
-      <div class="divider"></div>
-      <p>Formal invitations and RSVP details will follow soon!</p>
-    </section>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">
+            Travelling in a larger group or looking for extra space? You can check out local homes on <a href="https://www.airbnb.com" target="_blank" rel="noopener">Airbnb</a> or search for additional options on <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a>.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE 5: TRAVEL -->
+    <div id="page-travel" class="tab-page">
+      <section class="travel-box">
+        <h2 class="section-title">Travel & Transport</h2>
+        <div class="divider"></div>
+        
+        <div style="max-width: 700px; margin: 0 auto;">
+          <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">By Train</h3>
+          <p style="margin-bottom: 2rem;">
+            The nearest train station is <strong>Markinch Station</strong>, which has direct links from Edinburgh, Dundee, and Aberdeen. 
+            Balbirnie House is approximately a <strong>15 to 20-minute walk</strong> (around 0.8 miles) through the park grounds from the station.
+          </p>
+
+          <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">Local Taxis</h3>
+          <p style="margin-bottom: 1rem;">If you prefer to grab a taxi from Markinch Station to Balbirnie, we recommend booking a local Glenrothes taxi in advance:</p>
+          <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1.05rem;">
+            <li>🚕 <strong>Glenrothes Taxis:</strong> <a href="tel:01592751111">01592 751111</a></li>
+            <li>🚕 <strong>Deans Taxis:</strong> <a href="tel:01592759000">01592 759000</a></li>
+            <li>🚕 <strong>Kip Taxis:</strong> <a href="tel:01592752222">01592 752222</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE 6: RSVP -->
+    <div id="page-rsvp" class="tab-page">
+      <section style="text-align: center;">
+        <h2 class="section-title">RSVP</h2>
+        <div class="divider"></div>
+        <p style="font-size: 1.1rem; color: var(--text-muted);">Formal invitations and RSVP details will follow soon!</p>
+      </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -583,7 +614,7 @@
 
   <script>
     // --- PASSWORD CHECK LOGIC ---
-    const CORRECT_PASSWORD = "Sarah&Scott2027"; 
+    const CORRECT_PASSWORD = "Balbirnie2027"; 
 
     function checkPassword() {
       const userInput = document.getElementById("passInput").value;
@@ -602,10 +633,35 @@
       }
     }
 
-    // Keep unlocked if guest refreshes tab during same session
     if (sessionStorage.getItem("wedding_unlocked") === "true") {
       document.getElementById("password-overlay").style.display = "none";
       document.getElementById("main-content").style.display = "block";
+    }
+
+    // --- PAGE / TAB SWITCHER LOGIC ---
+    function showTab(tabId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.tab-page');
+      pages.forEach(page => page.classList.remove('active'));
+
+      // Remove active class from all nav links
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      // Show selected page
+      const selectedPage = document.getElementById('page-' + tabId);
+      if (selectedPage) {
+        selectedPage.classList.add('active');
+      }
+
+      // Highlight active nav link
+      const selectedNav = document.getElementById('nav-' + tabId);
+      if (selectedNav) {
+        selectedNav.classList.add('active');
+      }
+
+      // Scroll smoothly to top when switching tabs
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // --- COUNTDOWN TIMER LOGIC ---
