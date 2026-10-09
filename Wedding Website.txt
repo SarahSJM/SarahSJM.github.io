@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah & Scott | Our Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mauve: #C47B95;
+      --soft-pink: #E8C5CE;
+      --lavender: #B5B2E3;
+      --cornflower: #9FBCE3;
+      --buttercup: #F4D9A0;
+      --sage-dark: #7FA06B;
+      --sage-light: #AAC99B;
+      --cream-bg: #FAF9F6;
+      --text-dark: #2B302A;
+      --text-muted: #5F665C;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(250, 249, 246, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(127, 160, 107, 0.15);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--sage-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(250,249,246,1) 100%);
+    }
+
+    .floral-frame-left, .floral-frame-right {
+      position: absolute;
+      top: 0;
+      width: 260px;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .floral-frame-left { left: 0; }
+    .floral-frame-right { right: 0; transform: scaleX(-1); }
+
+    @media (max-width: 900px) {
+      .floral-frame-left, .floral-frame-right { width: 140px; opacity: 0.5; }
+    }
+    @media (max-width: 600px) {
+      .floral-frame-left, .floral-frame-right { display: none; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .subtitle-top {
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .date-badge {
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    .venue-name {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2.2rem;
+      background-color: var(--sage-dark);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 1px solid var(--sage-dark);
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--sage-dark);
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .count-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .count-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--sage-dark);
+    }
+
+    .count-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    /* General Section Styling */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background-color: var(--buttercup);
+      margin: 0 auto 3rem auto;
+    }
+
+    /* Details Grid */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .detail-card {
+      background: white;
+      padding: 2.5rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid rgba(127, 160, 107, 0.1);
+    }
+
+    .detail-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--sage-dark);
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+
+    .timeline-time {
+      width: 120px;
+      font-weight: 600;
+      color: var(--mauve);
+      text-align: right;
+      padding-right: 2rem;
+    }
+
+    .timeline-desc {
+      flex: 1;
+      padding-left: 2rem;
+      border-left: 2px solid var(--soft-pink);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: white;
+      border-top: 1px solid rgba(127, 160, 107, 0.15);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#welcome" class="active">Welcome</a></li>
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#places-to-stay">Places to Stay</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#wedding-party">Wedding Party</a></li>
+        <li><a href="#qa">Q & A</a></li>
+        <li><a href="#gift-list">Gift List</a></li>
+        <li><a href="#moments">Moments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero" id="welcome">
+    
+    <!-- Left Floral Frame SVG -->
+    <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+      <!-- Mauve & Pink Blooms -->
+      <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+      <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+      <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+      <!-- Lavender & Blue Blooms -->
+      <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+      <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+      <!-- Yellow Blooms -->
+      <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+      <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+    </svg>
+
+    <!-- Right Floral Frame SVG -->
+    <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+      <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+      <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+      <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+      <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+      <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+      <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+      <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+    </svg>
+
+    <div class="hero-content">
+      <p class="subtitle-top">We Are Getting Married!</p>
+      <h1>Sarah & Scott</h1>
+      <p class="date-badge">28 . 08 . 2027</p>
+      <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE</p>
+      <a href="#rsvp" class="btn">RSVP Now</a>
+
+      <!-- Live Countdown -->
+      <div class="countdown" id="timer">
+        <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
+        <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
+        <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
+        <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Details Section -->
+  <section id="schedule">
+    <h2 class="section-title">The Big Day</h2>
+    <div class="divider"></div>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>When</h3>
+        <p><strong>Saturday, 28th August 2027</strong></p>
+        <p>Ceremony begins at 1:30 PM</p>
+        <p>Carriages at Midnight</p>
+      </div>
+      <div class="detail-card">
+        <h3>Where</h3>
+        <p><strong>Balbirnie House Hotel</strong></p>
+        <p>Markinch, Glenrothes</p>
+        <p>Fife, KY7 6NE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section>
+    <h2 class="section-title">Order of the Day</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">1:00 PM</div>
+        <div class="timeline-desc">
+          <h4>Guest Arrival</h4>
+          <p>Welcome drinks in the Orangery</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">1:30 PM</div>
+        <div class="timeline-desc">
+          <h4>The Ceremony</h4>
+          <p>Exchanging our vows</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">2:30 PM</div>
+        <div class="timeline-desc">
+          <h4>Drinks & Photographs</h4>
+          <p>Canapés and lawn games</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">5:00 PM</div>
+        <div class="timeline-desc">
+          <h4>Wedding Breakfast</h4>
+          <p>Speeches and delicious food</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">8:00 PM</div>
+        <div class="timeline-desc">
+          <h4>Evening Reception</h4>
+          <p>Dancing & celebrations!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
+    <p>We can't wait to celebrate with you!</p>
+  </footer>
+
+  <!-- Countdown Script -->
+  <script>
+    const weddingDate = new Date("August 28, 2027 13:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = weddingDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+        document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
