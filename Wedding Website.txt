@@ -35,6 +35,92 @@
       overflow-x: hidden;
     }
 
+    /* Password Protection Overlay */
+    #password-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--cream-bg);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .password-card {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(127, 160, 107, 0.2);
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .password-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-style: italic;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .password-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .password-card input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(127, 160, 107, 0.4);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .password-card input:focus {
+      border-color: var(--sage-dark);
+    }
+
+    .password-card button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--sage-dark);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .password-card button:hover {
+      background-color: #698757;
+    }
+
+    .error-msg {
+      color: var(--mauve);
+      font-size: 0.8rem;
+      margin-top: 0.8rem;
+      display: none;
+    }
+
+    /* Main Content (Hidden until unlocked) */
+    #main-content {
+      display: none;
+    }
+
     h1, h2, h3, h4, .serif {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 400;
@@ -280,142 +366,180 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#welcome" class="active">Welcome</a></li>
-        <li><a href="#our-story">Our Story</a></li>
-        <li><a href="#rsvp">RSVP</a></li>
-        <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#places-to-stay">Places to Stay</a></li>
-        <li><a href="#travel">Travel</a></li>
-        <li><a href="#wedding-party">Wedding Party</a></li>
-        <li><a href="#qa">Q & A</a></li>
-        <li><a href="#gift-list">Gift List</a></li>
-        <li><a href="#moments">Moments</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <div class="hero" id="welcome">
-    
-    <!-- Left Floral Frame SVG -->
-    <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-      <!-- Mauve & Pink Blooms -->
-      <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-      <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-      <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-      <!-- Lavender & Blue Blooms -->
-      <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-      <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-      <!-- Yellow Blooms -->
-      <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-      <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-    </svg>
-
-    <!-- Right Floral Frame SVG -->
-    <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-      <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-      <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-      <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-      <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-      <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-      <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-      <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-    </svg>
-
-    <div class="hero-content">
-      <p class="subtitle-top">We Are Getting Married!</p>
-      <h1>Sarah & Scott</h1>
-      <p class="date-badge">28 . 08 . 2027</p>
-      <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE</p>
-      <a href="#rsvp" class="btn">RSVP Now</a>
-
-      <!-- Live Countdown -->
-      <div class="countdown" id="timer">
-        <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
-        <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
-        <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
-        <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
-      </div>
+  <!-- Password Protection Screen -->
+  <div id="password-overlay">
+    <div class="password-card">
+      <h2>Sarah & Scott</h2>
+      <p>Please enter the password from your invitation to access our wedding website.</p>
+      <input type="password" id="passInput" placeholder="Enter password" onkeypress="handleKeyPress(event)" />
+      <button onclick="checkPassword()">Enter Site</button>
+      <div id="errorMsg" class="error-msg">Incorrect password. Please try again!</div>
     </div>
   </div>
 
-  <!-- Key Details Section -->
-  <section id="schedule">
-    <h2 class="section-title">The Big Day</h2>
-    <div class="divider"></div>
-    <div class="details-grid">
-      <div class="detail-card">
-        <h3>When</h3>
-        <p><strong>Saturday, 28th August 2027</strong></p>
-        <p>Ceremony begins at 1:30 PM</p>
-        <p>Carriages at Midnight</p>
-      </div>
-      <div class="detail-card">
-        <h3>Where</h3>
-        <p><strong>Balbirnie House Hotel</strong></p>
-        <p>Markinch, Glenrothes</p>
-        <p>Fife, KY7 6NE</p>
+  <!-- Main Website Content (Protected) -->
+  <div id="main-content">
+    
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#welcome" class="active">Welcome</a></li>
+          <li><a href="#our-story">Our Story</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#places-to-stay">Places to Stay</a></li>
+          <li><a href="#travel">Travel</a></li>
+          <li><a href="#wedding-party">Wedding Party</a></li>
+          <li><a href="#qa">Q & A</a></li>
+          <li><a href="#gift-list">Gift List</a></li>
+          <li><a href="#moments">Moments</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero" id="welcome">
+      
+      <!-- Left Floral Frame SVG -->
+      <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+      </svg>
+
+      <!-- Right Floral Frame SVG -->
+      <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+      </svg>
+
+      <div class="hero-content">
+        <p class="subtitle-top">We Are Getting Married!</p>
+        <h1>Sarah & Scott</h1>
+        <p class="date-badge">28 . 08 . 2027</p>
+        <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE</p>
+        <a href="#rsvp" class="btn">RSVP Now</a>
+
+        <!-- Live Countdown -->
+        <div class="countdown" id="timer">
+          <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
+          <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
+          <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
+          <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Timeline Section -->
-  <section>
-    <h2 class="section-title">Order of the Day</h2>
-    <div class="divider"></div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-time">1:00 PM</div>
-        <div class="timeline-desc">
-          <h4>Guest Arrival</h4>
-          <p>Welcome drinks in the Orangery</p>
+    <!-- Key Details Section -->
+    <section id="schedule">
+      <h2 class="section-title">The Big Day</h2>
+      <div class="divider"></div>
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>When</h3>
+          <p><strong>Saturday, 28th August 2027</strong></p>
+          <p>Ceremony begins at 1:30 PM</p>
+          <p>Carriages at Midnight</p>
+        </div>
+        <div class="detail-card">
+          <h3>Where</h3>
+          <p><strong>Balbirnie House Hotel</strong></p>
+          <p>Markinch, Glenrothes</p>
+          <p>Fife, KY7 6NE</p>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-time">1:30 PM</div>
-        <div class="timeline-desc">
-          <h4>The Ceremony</h4>
-          <p>Exchanging our vows</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">2:30 PM</div>
-        <div class="timeline-desc">
-          <h4>Drinks & Photographs</h4>
-          <p>Canapés and lawn games</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">5:00 PM</div>
-        <div class="timeline-desc">
-          <h4>Wedding Breakfast</h4>
-          <p>Speeches and delicious food</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">8:00 PM</div>
-        <div class="timeline-desc">
-          <h4>Evening Reception</h4>
-          <p>Dancing & celebrations!</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
-    <p>We can't wait to celebrate with you!</p>
-  </footer>
+    <!-- Timeline Section -->
+    <section>
+      <h2 class="section-title">Order of the Day</h2>
+      <div class="divider"></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">1:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Guest Arrival</h4>
+            <p>Welcome drinks in the Orangery</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">1:30 PM</div>
+          <div class="timeline-desc">
+            <h4>The Ceremony</h4>
+            <p>Exchanging our vows</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">2:30 PM</div>
+          <div class="timeline-desc">
+            <h4>Drinks & Photographs</h4>
+            <p>Canapés and lawn games</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">5:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Wedding Breakfast</h4>
+            <p>Speeches and delicious food</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">8:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Evening Reception</h4>
+            <p>Dancing & celebrations!</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Countdown Script -->
+    <!-- Footer -->
+    <footer>
+      <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
+      <p>We can't wait to celebrate with you!</p>
+    </footer>
+  </div>
+
   <script>
+    // --- PASSWORD CHECK LOGIC ---
+    const CORRECT_PASSWORD = "Sarah&Scott2027"; // You can change your password here!
+
+    function checkPassword() {
+      const userInput = document.getElementById("passInput").value;
+      if (userInput === CORRECT_PASSWORD) {
+        document.getElementById("password-overlay").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+        sessionStorage.setItem("wedding_unlocked", "true");
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    }
+
+    // Keep unlocked if guest refreshes tab during same session
+    if (sessionStorage.getItem("wedding_unlocked") === "true") {
+      document.getElementById("password-overlay").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }
+
+    // --- COUNTDOWN TIMER LOGIC ---
     const weddingDate = new Date("August 28, 2027 13:30:00").getTime();
 
     function updateCountdown() {
