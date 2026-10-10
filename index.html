@@ -490,14 +490,6 @@
       border-color: var(--sage-dark);
     }
 
-    .meal-selection-box {
-      background: rgba(127, 160, 107, 0.05);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px dashed var(--sage-light);
-      margin-bottom: 1.5rem;
-    }
-
     .stay-list a, .travel-box a {
       color: var(--sage-dark);
       font-weight: 600;
@@ -765,7 +757,6 @@
         <div class="divider"></div>
 
         <div class="faq-list">
-          <!-- FAQ 1: Bridal Party / Attire -->
           <div class="faq-item">
             <h3>👗 What is the bridal party wearing?</h3>
             <div class="faq-side-by-side">
@@ -776,25 +767,21 @@
             </div>
           </div>
 
-          <!-- FAQ 2: Parking -->
           <div class="faq-item">
             <h3>🅿️ Is there onsite parking at Balbirnie?</h3>
             <p>There is plenty of onsite parking with over 200 spaces for guests 🚘!</p>
           </div>
 
-          <!-- FAQ 3: Ceremony location -->
           <div class="faq-item">
             <h3>☀️ Will the ceremony be indoors or outdoors?</h3>
             <p>We are hoping for outdoors 🌿 but you never know! It will be decided on the day, based on the weather conditions 🌦️.</p>
           </div>
 
-          <!-- FAQ 4: End time -->
           <div class="faq-item">
             <h3>🌙 What time will the wedding end?</h3>
             <p>The wedding will finish at midnight 🕛🎉!</p>
           </div>
 
-          <!-- FAQ 5: Gift list -->
           <div class="faq-item">
             <h3>🎁 Is there a gift list?</h3>
             <p>
@@ -812,7 +799,7 @@
         <div class="divider"></div>
         
         <div class="rsvp-card">
-          <!-- Displayed if guest's name has already been submitted -->
+          <!-- Shown if typed name was submitted previously -->
           <div id="rsvp-status-msg" style="display: none; padding: 2rem; background: var(--cream-bg); border-radius: 12px; border: 1px solid var(--sage-light); text-align: center;">
             <h3 style="color: var(--sage-dark); font-size: 1.8rem; margin-bottom: 1rem;">Response Received! ✨</h3>
             <p style="font-size: 1.05rem; color: var(--text-dark); line-height: 1.7;">
@@ -821,61 +808,63 @@
             <button onclick="resetRsvpView()" class="btn" style="margin-top: 1.5rem; font-size: 0.75rem; padding: 0.5rem 1.5rem;">Submit Another Guest 👥</button>
           </div>
 
-          <!-- The Active RSVP Form -->
+          <!-- Active Form -->
           <form id="rsvp-form" action="https://formspree.io/f/xaeqjepz" method="POST" onsubmit="return handleRsvpFormSubmit(event)">
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by <strong>5pm on 28th June 2027</strong> to help us finalize our arrangements! 🕒</p>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by <strong>5pm on 28th June 2027</strong> to help us finalize our arrangements! 🕒<br><em>Please submit one form per guest.</em></p>
 
+            <!-- 1. Guest Name -->
             <div class="form-group">
-              <label for="guest-name">Full Name(s) of Guest(s) 👥</label>
-              <input type="text" id="guest-name" name="Full Name(s)" required placeholder="e.g. John & Jane Smith" oninput="checkIfNameSubmitted()">
+              <label for="guest-name">Full Name 👤</label>
+              <input type="text" id="guest-name" name="Full Name" required placeholder="e.g. Jane Smith" oninput="checkIfNameSubmitted()">
             </div>
 
+            <!-- 2. Attendance -->
             <div class="form-group">
               <label for="attending">Will you be attending? 🎉</label>
-              <select id="attending" name="Attendance" required onchange="toggleMealSelections()">
+              <select id="attending" name="Attendance" required>
                 <option value="" disabled selected>Please select an option</option>
                 <option value="Joyfully Accept">Joyfully Accept 🥳</option>
                 <option value="Regretfully Decline">Regretfully Decline 😢</option>
               </select>
             </div>
 
-            <!-- Meal Selection Dropdowns per Course -->
-            <div id="meal-selections" class="meal-selection-box" style="display: none;">
-              <h4 style="color: var(--sage-dark); margin-bottom: 1rem; font-size: 1.2rem;">Meal Choices 🍽️</h4>
-              
-              <div class="form-group">
-                <label for="starter">Starter Choice 🥣</label>
-                <select id="starter" name="Starter Choice">
-                  <option value="" disabled selected>Select a starter</option>
-                  <option value="Roast Tomato & Lentil Soup">Roast Tomato & Lentil Soup</option>
-                  <option value="Duck Liver Parfait">Duck Liver Parfait</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="main">Main Choice 🍗</label>
-                <select id="main" name="Main Choice">
-                  <option value="" disabled selected>Select a main course</option>
-                  <option value="Chicken Balmoral">Chicken Balmoral</option>
-                  <option value="Fillet of Scottish Salmon">Fillet of Scottish Salmon</option>
-                </select>
-              </div>
-
-              <div class="form-group" style="margin-bottom: 0;">
-                <label for="dessert">Dessert Choice 🍨</label>
-                <select id="dessert" name="Dessert Choice">
-                  <option value="" disabled selected>Select a dessert</option>
-                  <option value="Vanilla Crème Brûlée">Vanilla Crème Brûlée</option>
-                  <option value="Apple Crumble Tart">Apple Crumble Tart</option>
-                </select>
-              </div>
+            <!-- 3. Starter Choice -->
+            <div class="form-group">
+              <label for="starter">Starter Choice 🥣</label>
+              <select id="starter" name="Starter Choice">
+                <option value="" disabled selected>Select a starter option</option>
+                <option value="Roast Tomato & Lentil Soup">Roast Tomato & Lentil Soup</option>
+                <option value="Duck Liver Parfait">Duck Liver Parfait</option>
+              </select>
             </div>
 
+            <!-- 4. Main Choice -->
+            <div class="form-group">
+              <label for="main">Main Choice 🍗</label>
+              <select id="main" name="Main Choice">
+                <option value="" disabled selected>Select a main option</option>
+                <option value="Chicken Balmoral">Chicken Balmoral</option>
+                <option value="Fillet of Scottish Salmon">Fillet of Scottish Salmon</option>
+              </select>
+            </div>
+
+            <!-- 5. Dessert Choice -->
+            <div class="form-group">
+              <label for="dessert">Dessert Choice 🍨</label>
+              <select id="dessert" name="Dessert Choice">
+                <option value="" disabled selected>Select a dessert option</option>
+                <option value="Vanilla Crème Brûlée">Vanilla Crème Brûlée</option>
+                <option value="Apple Crumble Tart">Apple Crumble Tart</option>
+              </select>
+            </div>
+
+            <!-- 6. Dietary Restrictions -->
             <div class="form-group">
               <label for="dietary">Dietary Requirements or Allergies 🥗</label>
-              <textarea id="dietary" name="Dietary Needs" rows="3" placeholder="Please specify who has each dietary requirement (e.g. John - Gluten Free)..."></textarea>
+              <textarea id="dietary" name="Dietary Needs" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
             </div>
 
+            <!-- 7. Song Request -->
             <div class="form-group">
               <label for="song">Song Request 🎵</label>
               <input type="text" id="song" name="Song Request" placeholder="What song gets you on the dance floor?">
@@ -920,24 +909,13 @@
       document.getElementById("main-content").style.display = "block";
     }
 
-    // Toggle meal selection box when guest selects attendance
-    function toggleMealSelections() {
-      const attendance = document.getElementById("attending").value;
-      const mealBox = document.getElementById("meal-selections");
-      if (attendance === "Joyfully Accept") {
-        mealBox.style.display = "block";
-      } else {
-        mealBox.style.display = "none";
-      }
-    }
-
-    // Get list of previously submitted guest names from localStorage
+    // Retrieve submitted guest names from localStorage
     function getSubmittedNames() {
       const saved = localStorage.getItem("submitted_guest_names");
       return saved ? JSON.parse(saved) : [];
     }
 
-    // Check if typed name has already been submitted
+    // Live check as user types their name
     function checkIfNameSubmitted() {
       const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
       const submittedNames = getSubmittedNames();
@@ -948,6 +926,7 @@
       }
     }
 
+    // Save name on form submit
     function handleRsvpFormSubmit(event) {
       const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
       const submittedNames = getSubmittedNames();
@@ -959,7 +938,6 @@
         return false;
       }
 
-      // Save new submitted name to localStorage array
       submittedNames.push(typedName);
       localStorage.setItem("submitted_guest_names", JSON.stringify(submittedNames));
       return true;
