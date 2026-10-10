@@ -719,7 +719,7 @@
         
         <div class="menu-card">
           <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
-            A quick reminder of the choices selected for our wedding breakfast
+            A quick reminder of the choices selected for our wedding meal
           </p>
 
           <div class="menu-course">
@@ -757,7 +757,6 @@
         <div class="divider"></div>
 
         <div class="faq-list">
-          <!-- FAQ 1: Bridal Party / Attire -->
           <div class="faq-item">
             <h3>What is the bridal party wearing?</h3>
             <div class="faq-side-by-side">
@@ -768,25 +767,21 @@
             </div>
           </div>
 
-          <!-- FAQ 2: Parking -->
           <div class="faq-item">
             <h3>Is there onsite parking at Balbirnie?</h3>
             <p>There is plenty of onsite parking with over 200 spaces for guests.</p>
           </div>
 
-          <!-- FAQ 3: Ceremony location -->
           <div class="faq-item">
             <h3>Will the ceremony be indoors or outdoors?</h3>
             <p>We are hoping for outdoors but you never know! It will be decided on the day, based on the weather conditions.</p>
           </div>
 
-          <!-- FAQ 4: End time -->
           <div class="faq-item">
             <h3>What time will the wedding end?</h3>
             <p>The wedding will finish at midnight.</p>
           </div>
 
-          <!-- FAQ 5: Gift list -->
           <div class="faq-item">
             <h3>Is there a gift list?</h3>
             <p>
@@ -804,40 +799,40 @@
         <div class="divider"></div>
         
         <div class="rsvp-card">
-          <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by July 1st, 2027 to help us finalize our arrangements!</p>
-          
-          <form id="rsvp-form" onsubmit="handleRsvpSubmit(event)">
+          <!-- Shown once a guest submits their RSVP -->
+          <div id="rsvp-status-msg" style="display: none; padding: 1.5rem; background: var(--cream-bg); border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--sage-light);">
+            <p style="font-size: 1rem; color: var(--text-dark); line-height: 1.6;">
+              The bride and groom have received your RSVP. If you need to update your attendance please let the bride and groom know by the 28th of June at the latest.
+            </p>
+          </div>
+
+          <form id="rsvp-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST" onsubmit="handleRsvpFormSubmit()">
             <div class="form-group">
               <label for="guest-name">Full Name(s)</label>
-              <input type="text" id="guest-name" required placeholder="e.g. John & Jane Smith">
+              <input type="text" id="guest-name" name="Full Name" required placeholder="e.g. John & Jane Smith">
             </div>
 
             <div class="form-group">
               <label for="attending">Will you be attending?</label>
-              <select id="attending" required>
+              <select id="attending" name="Attendance" required>
                 <option value="" disabled selected>Please select an option</option>
-                <option value="accept">Joyfully Accept</option>
-                <option value="decline">Regretfully Decline</option>
+                <option value="Joyfully Accept">Joyfully Accept</option>
+                <option value="Regretfully Decline">Regretfully Decline</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="dietary">Dietary Requirements or Allergies</label>
-              <textarea id="dietary" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
+              <textarea id="dietary" name="Dietary Needs" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
             </div>
 
             <div class="form-group">
               <label for="song">Song Request</label>
-              <input type="text" id="song" placeholder="What song gets you on the dance floor?">
+              <input type="text" id="song" name="Song Request" placeholder="What song gets you on the dance floor?">
             </div>
 
             <button type="submit" class="btn" style="width: 100%; border-radius: 30px; margin-top: 1rem;">Send RSVP</button>
           </form>
-
-          <div id="rsvp-success" style="display: none; padding: 2rem; background: var(--cream-bg); border-radius: 12px; margin-top: 1rem;">
-            <h3 style="color: var(--sage-dark); font-size: 1.8rem; margin-bottom: 0.5rem;">Thank You!</h3>
-            <p>Your response has been received. We can't wait to celebrate with you!</p>
-          </div>
         </div>
       </section>
     </div>
@@ -845,7 +840,7 @@
     <!-- Footer -->
     <footer>
       <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
-      <p>We can'wait to celebrate with you!</p>
+      <p>We can't wait to celebrate with you!</p>
     </footer>
   </div>
 
@@ -870,9 +865,15 @@
       }
     }
 
-    if (sessionStorage.sessionStorage !== undefined && sessionStorage.getItem("wedding_unlocked") === "true") {
+    if (sessionStorage.getItem("wedding_unlocked") === "true") {
       document.getElementById("password-overlay").style.display = "none";
       document.getElementById("main-content").style.display = "block";
+    }
+
+    // Check if guest has submitted RSVP previously in this browser
+    if (localStorage.getItem("rsvp_submitted") === "true") {
+      document.getElementById("rsvp-form").style.display = "none";
+      document.getElementById("rsvp-status-msg").style.display = "block";
     }
 
     // --- PAGE / TAB SWITCHER LOGIC ---
@@ -896,11 +897,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- RSVP SUBMIT LOGIC ---
-    function handleRsvpSubmit(e) {
-      e.preventDefault();
-      document.getElementById('rsvp-form').style.display = 'none';
-      document.getElementById('rsvp-success').style.display = 'block';
+    function handleRsvpFormSubmit() {
+      localStorage.setItem("rsvp_submitted", "true");
     }
 
     // --- COUNTDOWN TIMER LOGIC ---
