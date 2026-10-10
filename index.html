@@ -719,7 +719,7 @@
         
         <div class="menu-card">
           <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
-            A quick reminder of the choices selected for our wedding breakfast 🍴
+            A quick reminder of the choices selected for our wedding breakfast 🍽️
           </p>
 
           <div class="menu-course">
@@ -808,8 +808,10 @@
             <button onclick="resetRsvpView()" class="btn" style="margin-top: 1.5rem; font-size: 0.75rem; padding: 0.5rem 1.5rem;">Submit Another Guest 👥</button>
           </div>
 
-          <!-- Active Form -->
+          <!-- Active Form with Formspree Action & Redirect -->
           <form id="rsvp-form" action="https://formspree.io/f/xaeqjepz" method="POST" onsubmit="return handleRsvpFormSubmit(event)">
+            <input type="hidden" name="_next" value="https://sarahsjm.github.io/">
+            
             <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by <strong>5pm on 28th June 2027</strong> to help us finalize our arrangements! 🕒<br><em>Please submit one form per guest.</em></p>
 
             <!-- 1. Guest Name -->
