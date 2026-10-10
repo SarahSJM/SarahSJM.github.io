@@ -170,7 +170,7 @@
       padding-bottom: 2px;
     }
 
-    /* Tab Page System: Only the active tab is displayed */
+    /* Tab Page System */
     .tab-page {
       display: none;
       min-height: 70vh;
@@ -373,7 +373,123 @@
       border-left: 2px solid var(--soft-pink);
     }
 
-    /* Link Styles */
+    /* FAQ Card & Flex Layout */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .faq-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(127, 160, 107, 0.15);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .faq-item h3 {
+      font-size: 1.5rem;
+      color: var(--sage-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-side-by-side {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .faq-img {
+      width: 130px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* Menu Section Layout */
+    .menu-card {
+      background: white;
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border: 1px solid rgba(127, 160, 107, 0.2);
+      text-align: center;
+    }
+
+    .menu-course {
+      margin-bottom: 2.5rem;
+    }
+
+    .menu-course h3 {
+      font-size: 2rem;
+      color: var(--sage-dark);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .menu-option {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin: 0.4rem 0;
+    }
+
+    .menu-or {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--mauve);
+      font-size: 1rem;
+      margin: 0.3rem 0;
+    }
+
+    /* RSVP Form */
+    .rsvp-card {
+      background: white;
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border: 1px solid rgba(127, 160, 107, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(127, 160, 107, 0.3);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      background: var(--cream-bg);
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--sage-dark);
+    }
+
     .stay-list a, .travel-box a {
       color: var(--sage-dark);
       font-weight: 600;
@@ -417,6 +533,8 @@
           <li><a onclick="showTab('schedule')" id="nav-schedule">Schedule</a></li>
           <li><a onclick="showTab('places-to-stay')" id="nav-places-to-stay">Places to Stay</a></li>
           <li><a onclick="showTab('travel')" id="nav-travel">Travel</a></li>
+          <li><a onclick="showTab('menu')" id="nav-menu">Menu</a></li>
+          <li><a onclick="showTab('faqs')" id="nav-faqs">Q & A</a></li>
           <li><a onclick="showTab('rsvp')" id="nav-rsvp">RSVP</a></li>
         </ul>
       </nav>
@@ -474,14 +592,11 @@
         
         <div style="max-width: 700px; margin: 0 auto; text-align: center;">
           <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-            It all started in first year, when we were randomly assigned to share a flat together with 4 other randoms and we were lucky enough to became close friends That bulletproof friendship lasted all year until one summer holidays night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the strict rules of "do not date your flatmate".
+            It all started in first year, sharing a flat as completely strict, sensible, totally-not-interested-in-each-other flatmates. That bulletproof friendship lasted until one fateful night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the dirty dishes and shared fridge space.
           </p>
           
           <p style="font-size: 1.1rem; line-height: 1.8;">
-            Since we were living together again in 2nd year, we naturally did the most rational thing possible: initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, and admitted to everyone, and ourselves, that this might be my person. 
-          </p>
-          <p style="font-size: 1.1rem; line-height: 1.8;">
-           And we are so happy to have you all here for the start of our forever!
+            Naturally, we did the most rational thing possible: initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, dropped the secret agent act, and admitted to everyone—and ourselves—that we were head over heels in love.
           </p>
         </div>
       </section>
@@ -596,19 +711,141 @@
       </section>
     </div>
 
-    <!-- PAGE 6: RSVP -->
+    <!-- PAGE 6: MENU -->
+    <div id="page-menu" class="tab-page">
+      <section>
+        <h2 class="section-title">Wedding Menu</h2>
+        <div class="divider"></div>
+        
+        <div class="menu-card">
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
+            A quick reminder of the choices selected for our wedding breakfast
+          </p>
+
+          <div class="menu-course">
+            <h3>Starters</h3>
+            <p class="menu-option">Roast Tomato & Lentil Soup</p>
+            <p class="menu-or">— or —</p>
+            <p class="menu-option">Duck Liver Parfait</p>
+          </div>
+
+          <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
+
+          <div class="menu-course">
+            <h3>Mains</h3>
+            <p class="menu-option">Chicken Balmoral</p>
+            <p class="menu-or">— or —</p>
+            <p class="menu-option">Fillet of Scottish Salmon</p>
+          </div>
+
+          <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
+
+          <div class="menu-course" style="margin-bottom: 0;">
+            <h3>Desserts</h3>
+            <p class="menu-option">Vanilla Crème Brûlée</p>
+            <p class="menu-or">— or —</p>
+            <p class="menu-option">Apple Crumble Tart</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE 7: QUESTIONS & ANSWERS (FAQS) -->
+    <div id="page-faqs" class="tab-page">
+      <section>
+        <h2 class="section-title">Questions & Answers</h2>
+        <div class="divider"></div>
+
+        <div class="faq-list">
+          <!-- FAQ 1: Bridal Party / Attire -->
+          <div class="faq-item">
+            <h3>What is the bridal party wearing?</h3>
+            <div class="faq-side-by-side">
+              <img src="Bridesmaid Colours.png" alt="Bridesmaid Colours Palette" class="faq-img">
+              <p style="flex: 1;">
+                We are doing a pastel coloured theme with different colours. Please wear wedding colours and attire that you love!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2: Parking -->
+          <div class="faq-item">
+            <h3>Is there onsite parking at Balbirnie?</h3>
+            <p>There is plenty of onsite parking with over 200 spaces for guests.</p>
+          </div>
+
+          <!-- FAQ 3: Ceremony location -->
+          <div class="faq-item">
+            <h3>Will the ceremony be indoors or outdoors?</h3>
+            <p>We are hoping for outdoors but you never know! It will be decided on the day, based on the weather conditions.</p>
+          </div>
+
+          <!-- FAQ 4: End time -->
+          <div class="faq-item">
+            <h3>What time will the wedding end?</h3>
+            <p>The wedding will finish at midnight.</p>
+          </div>
+
+          <!-- FAQ 5: Gift list -->
+          <div class="faq-item">
+            <h3>Is there a gift list?</h3>
+            <p>
+              The greatest gift of all is having you celebrate with us on our big day. We are not setting up a traditional registry. Your presence is truly all we ask for! If you would still like to give something to mark the occasion, a contribution toward our future together would be warmly appreciated.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE 8: RSVP -->
     <div id="page-rsvp" class="tab-page">
       <section style="text-align: center;">
         <h2 class="section-title">RSVP</h2>
         <div class="divider"></div>
-        <p style="font-size: 1.1rem; color: var(--text-muted);">Formal invitations and RSVP details will follow soon!</p>
+        
+        <div class="rsvp-card">
+          <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by July 1st, 2027 to help us finalize our arrangements!</p>
+          
+          <form id="rsvp-form" onsubmit="handleRsvpSubmit(event)">
+            <div class="form-group">
+              <label for="guest-name">Full Name(s)</label>
+              <input type="text" id="guest-name" required placeholder="e.g. John & Jane Smith">
+            </div>
+
+            <div class="form-group">
+              <label for="attending">Will you be attending?</label>
+              <select id="attending" required>
+                <option value="" disabled selected>Please select an option</option>
+                <option value="accept">Joyfully Accept</option>
+                <option value="decline">Regretfully Decline</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dietary">Dietary Requirements or Allergies</label>
+              <textarea id="dietary" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="song">Song Request</label>
+              <input type="text" id="song" placeholder="What song gets you on the dance floor?">
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%; border-radius: 30px; margin-top: 1rem;">Send RSVP</button>
+          </form>
+
+          <div id="rsvp-success" style="display: none; padding: 2rem; background: var(--cream-bg); border-radius: 12px; margin-top: 1rem;">
+            <h3 style="color: var(--sage-dark); font-size: 1.8rem; margin-bottom: 0.5rem;">Thank You!</h3>
+            <p>Your response has been received. We can't wait to celebrate with you!</p>
+          </div>
+        </div>
       </section>
     </div>
 
     <!-- Footer -->
     <footer>
       <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott</p>
-      <p>We can't wait to celebrate with you!</p>
+      <p>We can'wait to celebrate with you!</p>
     </footer>
   </div>
 
@@ -633,35 +870,37 @@
       }
     }
 
-    if (sessionStorage.getItem("wedding_unlocked") === "true") {
+    if (sessionStorage.sessionStorage !== undefined && sessionStorage.getItem("wedding_unlocked") === "true") {
       document.getElementById("password-overlay").style.display = "none";
       document.getElementById("main-content").style.display = "block";
     }
 
     // --- PAGE / TAB SWITCHER LOGIC ---
     function showTab(tabId) {
-      // Hide all pages
       const pages = document.querySelectorAll('.tab-page');
       pages.forEach(page => page.classList.remove('active'));
 
-      // Remove active class from all nav links
       const navLinks = document.querySelectorAll('.nav-links a');
       navLinks.forEach(link => link.classList.remove('active'));
 
-      // Show selected page
       const selectedPage = document.getElementById('page-' + tabId);
       if (selectedPage) {
         selectedPage.classList.add('active');
       }
 
-      // Highlight active nav link
       const selectedNav = document.getElementById('nav-' + tabId);
       if (selectedNav) {
         selectedNav.classList.add('active');
       }
 
-      // Scroll smoothly to top when switching tabs
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- RSVP SUBMIT LOGIC ---
+    function handleRsvpSubmit(e) {
+      e.preventDefault();
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
     }
 
     // --- COUNTDOWN TIMER LOGIC ---
