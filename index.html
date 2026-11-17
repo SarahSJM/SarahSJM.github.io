@@ -35,92 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* Password Protection Overlay */
-    #password-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: var(--cream-bg);
-      z-index: 10000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .password-card {
-      background: white;
-      padding: 3rem 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border: 1px solid rgba(127, 160, 107, 0.2);
-      max-width: 420px;
-      width: 100%;
-    }
-
-    .password-card h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-style: italic;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .password-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .password-card input {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid rgba(127, 160, 107, 0.4);
-      border-radius: 30px;
-      font-size: 0.95rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      outline: none;
-      font-family: inherit;
-    }
-
-    .password-card input:focus {
-      border-color: var(--sage-dark);
-    }
-
-    .password-card button {
-      width: 100%;
-      padding: 0.8rem;
-      background-color: var(--sage-dark);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .password-card button:hover {
-      background-color: #698757;
-    }
-
-    .error-msg {
-      color: var(--mauve);
-      font-size: 0.8rem;
-      margin-top: 0.8rem;
-      display: none;
-    }
-
-    /* Main Content (Hidden until unlocked) */
-    #main-content {
-      display: none;
-    }
-
     h1, h2, h3, h4, .serif {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 400;
@@ -510,414 +424,412 @@
 </head>
 <body>
 
-  <!-- Password Protection Screen -->
-  <div id="password-overlay">
-    <div class="password-card">
-      <h2>Sarah & Scott </h2>
-      <p>Please enter the password from your invitation to access our wedding website! ✨</p>
-      <input type="password" id="passInput" placeholder="Enter password" onkeypress="handleKeyPress(event)" />
-      <button onclick="checkPassword()">Enter Site 🎉</button>
-      <div id="errorMsg" class="error-msg">Incorrect password. Please try again! 🗝️</div>
-    </div>
-  </div>
+  <!-- Navigation Links -->
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a onclick="showTab('welcome')" id="nav-welcome" class="active">Welcome </a></li>
+        <li><a onclick="showTab('our-story')" id="nav-our-story">Our Story 💖</a></li>
+        <li><a onclick="showTab('schedule')" id="nav-schedule">Schedule ⏰</a></li>
+        <li><a onclick="showTab('places-to-stay')" id="nav-places-to-stay">Places to Stay 🏡</a></li>
+        <li><a onclick="showTab('travel')" id="nav-travel">Travel 🚂</a></li>
+        <li><a onclick="showTab('menu')" id="nav-menu">Menu 🍽️</a></li>
+        <li><a onclick="showTab('faqs')" id="nav-faqs">Q & A ❓</a></li>
+        <li><a onclick="showTab('rsvp')" id="nav-rsvp">RSVP 💌</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Main Website Content (Protected) -->
-  <div id="main-content">
-    
-    <!-- Navigation Links -->
-    <header>
-      <nav>
-        <ul class="nav-links">
-          <li><a onclick="showTab('welcome')" id="nav-welcome" class="active">Welcome </a></li>
-          <li><a onclick="showTab('our-story')" id="nav-our-story">Our Story 💖</a></li>
-          <li><a onclick="showTab('schedule')" id="nav-schedule">Schedule ⏰</a></li>
-          <li><a onclick="showTab('places-to-stay')" id="nav-places-to-stay">Places to Stay 🏡</a></li>
-          <li><a onclick="showTab('travel')" id="nav-travel">Travel 🚂</a></li>
-          <li><a onclick="showTab('menu')" id="nav-menu">Menu 🍽️</a></li>
-          <li><a onclick="showTab('faqs')" id="nav-faqs">Q & A ❓</a></li>
-          <li><a onclick="showTab('rsvp')" id="nav-rsvp">RSVP 💌</a></li>
-        </ul>
-      </nav>
-    </header>
+  <!-- PAGE 1: WELCOME / HOME -->
+  <div id="page-welcome" class="tab-page active">
+    <div class="hero">
+      <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+      </svg>
 
-    <!-- PAGE 1: WELCOME / HOME -->
-    <div id="page-welcome" class="tab-page active">
-      <div class="hero">
-        <svg class="floral-frame-left" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-          <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-          <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-          <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-          <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-          <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-          <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-          <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-        </svg>
+      <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
+        <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
+        <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
+        <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
+        <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
+        <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
+        <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
+        <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
+      </svg>
 
-        <svg class="floral-frame-right" viewBox="0 0 200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M-20 50 Q 80 200 20 400 T 50 750" stroke="#7FA06B" stroke-width="2" fill="none"/>
-          <circle cx="60" cy="120" r="35" fill="#C47B95" opacity="0.8"/>
-          <circle cx="110" cy="280" r="40" fill="#E8C5CE" opacity="0.85"/>
-          <circle cx="40" cy="450" r="30" fill="#C47B95" opacity="0.75"/>
-          <circle cx="80" cy="200" r="28" fill="#B5B2E3" opacity="0.85"/>
-          <circle cx="90" cy="580" r="32" fill="#9FBCE3" opacity="0.8"/>
-          <circle cx="50" cy="340" r="38" fill="#F4D9A0" opacity="0.85"/>
-          <circle cx="70" cy="680" r="30" fill="#F4D9A0" opacity="0.8"/>
-        </svg>
+      <div class="hero-content">
+        <p class="subtitle-top">We Are Getting Married! 🍾</p>
+        <h1>Sarah & Scott</h1>
+        <p class="date-badge">28 . 08 . 2027 </p>
+        <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE 🏰</p>
+        <a onclick="showTab('rsvp')" class="btn">RSVP Now 💌</a>
 
-        <div class="hero-content">
-          <p class="subtitle-top">We Are Getting Married! 🍾</p>
-          <h1>Sarah & Scott</h1>
-          <p class="date-badge">28 . 08 . 2027 </p>
-          <p class="venue-name">Balbirnie House Hotel • Glenrothes, KY7 6NE 🏰</p>
-          <a onclick="showTab('rsvp')" class="btn">RSVP Now 💌</a>
-
-          <div class="countdown" id="timer">
-            <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
-            <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
-            <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
-            <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
-          </div>
+        <div class="countdown" id="timer">
+          <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Days</span></div>
+          <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Hours</span></div>
+          <div class="count-item"><span class="count-number" id="mins">00</span><span class="count-label">Mins</span></div>
+          <div class="count-item"><span class="count-number" id="secs">00</span><span class="count-label">Secs</span></div>
         </div>
       </div>
     </div>
-
-    <!-- PAGE 2: OUR STORY -->
-    <div id="page-our-story" class="tab-page">
-      <section style="text-align: center;">
-        <h2 class="section-title">Our Story 💕</h2>
-        <div class="divider"></div>
-        
-        <img src="Proposal Photo.jpg" alt="Sarah and Scott" style="width: 100%; max-width: 500px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-            It all started in first year, sharing a flat as completely strict, sensible, flatmates 🏠. The bulletproof friendship that formed only lasted until one summer night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the "don't date your flatmates rule"!
-          </p>
-          
-          <p style="font-size: 1.1rem; line-height: 1.8;">
-            Naturally, we did the most rational thing possible and initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, and admitted to everyone—and ourselves—that this might be the one! 🥰
-          </p>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 3: SCHEDULE -->
-    <div id="page-schedule" class="tab-page">
-      <section>
-        <h2 class="section-title">The Big Day!</h2>
-        <div class="divider"></div>
-        <div class="details-grid">
-          <div class="detail-card">
-            <h3>When 📅</h3>
-            <p><strong>Saturday, 28th August 2027</strong></p>
-            <p>Ceremony begins at 1:30 PM ⏱️</p>
-            <p>Carriages at Midnight 🎆</p>
-          </div>
-          <div class="detail-card">
-            <h3>Where 📍</h3>
-            <p><strong>Balbirnie House Hotel</strong></p>
-            <p>Markinch, Glenrothes</p>
-            <p>Fife, KY7 6NE 🏴󠁧󠁢󠁳󠁣󠁴󠁿</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="section-title">Order of the Day 🎉</h2>
-        <div class="divider"></div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">1:00 PM</div>
-            <div class="timeline-desc">
-              <h4>Guest Arrival 🥂</h4>
-              <p>Welcome drinks in the Orangery</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">1:30 PM</div>
-            <div class="timeline-desc">
-              <h4>The Ceremony 💍</h4>
-              <p>Exchanging our vows</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">2:30 PM</div>
-            <div class="timeline-desc">
-              <h4>Drinks & Photographs 📸</h4>
-              <p>Canapés and lawn games</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">5:00 PM</div>
-            <div class="timeline-desc">
-              <h4>Wedding Breakfast </h4>
-              <p>Speeches and delicious food</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">8:00 PM</div>
-            <div class="timeline-desc">
-              <h4>Evening Reception 🕺💃</h4>
-              <p>Dancing & celebrations!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 4: PLACES TO STAY -->
-    <div id="page-places-to-stay" class="tab-page">
-      <section>
-        <h2 class="section-title">Places to Stay 🛌</h2>
-        <div class="divider"></div>
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-          <p style="margin-bottom: 2rem;">Here are a few recommended accommodation options nearby for your stay:</p>
-          
-          <ul class="stay-list" style="list-style: none; padding: 0; line-height: 2.2; margin-bottom: 2.5rem; font-size: 1.05rem;">
-            <li>🏡 <strong>Laurel Bank, Markinch:</strong> <a href="https://www.laurelbankhotel.co.uk/" target="_blank" rel="noopener">Visit Website</a></li>
-            <li>🏨 <strong>Holiday Inn Express, Glenrothes:</strong> <a href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/glenrothes/glnuk/hoteldetail" target="_blank" rel="noopener">Visit Website</a></li>
-            <li>🏨 <strong>Premier Inn, Glenrothes:</strong> <a href="https://www.premierinn.com/gb/en/hotels/scotland/fife/glenrothes/glenrothes.html" target="_blank" rel="noopener">Visit Website</a></li>
-          </ul>
-
-          <p style="font-size: 0.95rem; color: var(--text-muted);">
-            Travelling in a larger group or looking for extra space? You can check out local homes on <a href="https://www.airbnb.com" target="_blank" rel="noopener">Airbnb 🏠</a> or search for additional options on <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com 🌐</a>.
-          </p>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 5: TRAVEL -->
-    <div id="page-travel" class="tab-page">
-      <section class="travel-box">
-        <h2 class="section-title">Travel & Transport 🚗</h2>
-        <div class="divider"></div>
-        
-        <div style="max-width: 700px; margin: 0 auto;">
-          <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">By Train 🚆</h3>
-          <p style="margin-bottom: 2rem;">
-            The nearest train station is <strong>Markinch Station</strong>, which has direct links from Edinburgh, Dundee, and Aberdeen. 
-            Balbirnie House is approximately a <strong>15 to 20-minute walk</strong> (around 0.8 miles) through the park grounds from the station 🚶‍♂️🚶‍♀️.
-          </p>
-
-          <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">Local Taxis 🚕</h3>
-          <p style="margin-bottom: 1rem;">If you prefer to grab a taxi from Markinch Station to Balbirnie, we recommend booking a local Glenrothes taxi in advance:</p>
-          <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1.05rem;">
-            <li>🚕 <strong>Glenrothes Taxis:</strong> <a href="tel:01592751111">01592 751111</a></li>
-            <li>🚕 <strong>Deans Taxis:</strong> <a href="tel:01592759000">01592 759000</a></li>
-            <li>🚕 <strong>Kip Taxis:</strong> <a href="tel:01592752222">01592 752222</a></li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 6: MENU -->
-    <div id="page-menu" class="tab-page">
-      <section>
-        <h2 class="section-title">Wedding Menu 🍷</h2>
-        <div class="divider"></div>
-        
-        <div class="menu-card">
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
-            A quick reminder of the choices selected for our wedding meal 🍽️
-          </p>
-
-          <div class="menu-course">
-            <h3>Starters </h3>
-            <p class="menu-option">Roast Tomato & Lentil Soup</p>
-            <p class="menu-or">— or —</p>
-            <p class="menu-option">Duck Liver Parfait</p>
-          </div>
-
-          <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
-
-          <div class="menu-course">
-            <h3>Mains </h3>
-            <p class="menu-option">Chicken Balmoral</p>
-            <p class="menu-or">— or —</p>
-            <p class="menu-option">Fillet of Scottish Salmon</p>
-          </div>
-
-          <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
-
-          <div class="menu-course" style="margin-bottom: 0;">
-            <h3>Desserts </h3>
-            <p class="menu-option">Vanilla Crème Brûlée</p>
-            <p class="menu-or">— or —</p>
-            <p class="menu-option">Apple Crumble Tart</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 7: QUESTIONS & ANSWERS (FAQS) -->
-    <div id="page-faqs" class="tab-page">
-      <section>
-        <h2 class="section-title">Questions & Answers </h2>
-        <div class="divider"></div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <h3>What is the bridal party wearing?</h3>
-            <div class="faq-side-by-side">
-              <img src="Bridesmaid Colours.png" alt="Bridesmaid Colours Palette" class="faq-img">
-              <p style="flex: 1;">
-                We are doing a pastel coloured theme with different colours. Please wear wedding attire and colours that you love! ✨
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3>🅿️ Is there onsite parking at Balbirnie?</h3>
-            <p>There is plenty of onsite parking with over 200 spaces!</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>☀️ Will the ceremony be indoors or outdoors?</h3>
-            <p>We are hoping for outdoors but it will be decided on the day, based on the weather conditions 🌦️.</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>🌙 What time will the wedding end?</h3>
-            <p>The wedding will finish at midnight 🕛🎉!</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>🎁 Is there a gift list?</h3>
-            <p>
-              The greatest gift of all is having you celebrate with us on our big day 💖. We are not setting up a traditional registry. Your presence is truly all we ask for! If you would still like to give something to mark the occasion, a contribution toward our future together would be warmly appreciated 🏡.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- PAGE 8: RSVP -->
-    <div id="page-rsvp" class="tab-page">
-      <section style="text-align: center;">
-        <h2 class="section-title">RSVP 💌</h2>
-        <div class="divider"></div>
-        
-        <div class="rsvp-card">
-          <!-- Shown if typed name was submitted previously -->
-          <div id="rsvp-status-msg" style="display: none; padding: 2rem; background: var(--cream-bg); border-radius: 12px; border: 1px solid var(--sage-light); text-align: center;">
-            <h3 style="color: var(--sage-dark); font-size: 1.8rem; margin-bottom: 1rem;">Response Received! ✨</h3>
-            <p style="font-size: 1.05rem; color: var(--text-dark); line-height: 1.7;">
-              Your form has already been submitted. If you need to update your attendance information please contact the bride or groom. Please submit your RSVP by 5pm on the 28th of June. 💖
-            </p>
-            <button onclick="resetRsvpView()" class="btn" style="margin-top: 1.5rem; font-size: 0.75rem; padding: 0.5rem 1.5rem;">Submit Another Guest 👥</button>
-          </div>
-
-          <!-- Active Form with Formspree Action & Redirect -->
-          <form id="rsvp-form" action="https://formspree.io/f/xaeqjepz" method="POST" onsubmit="return handleRsvpFormSubmit(event)">
-            <input type="hidden" name="_next" value="https://sarahsjm.github.io/">
-            
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by <strong>5pm on 28th June 2027</strong> to help us finalize our arrangements! 🕒<br><em>Please submit one form per guest.</em></p>
-
-            <!-- 1. Guest Name -->
-            <div class="form-group">
-              <label for="guest-name">Full Name 👤</label>
-              <input type="text" id="guest-name" name="Full Name" required placeholder="e.g. Jane Smith" oninput="checkIfNameSubmitted()">
-            </div>
-
-            <!-- 2. Attendance -->
-            <div class="form-group">
-              <label for="attending">Will you be attending? </label>
-              <select id="attending" name="Attendance" required>
-                <option value="" disabled selected>Please select an option</option>
-                <option value="Joyfully Accept">Joyfully Accept 🥳</option>
-                <option value="Regretfully Decline">Regretfully Decline 😢</option>
-              </select>
-            </div>
-
-            <!-- 3. Starter Choice -->
-            <div class="form-group">
-              <label for="starter">Starter Choice </label>
-              <select id="starter" name="Starter Choice">
-                <option value="" disabled selected>Select a starter option</option>
-                <option value="Roast Tomato & Lentil Soup">Roast Tomato & Lentil Soup</option>
-                <option value="Duck Liver Parfait">Duck Liver Parfait</option>
-              </select>
-            </div>
-
-            <!-- 4. Main Choice -->
-            <div class="form-group">
-              <label for="main">Main Choice </label>
-              <select id="main" name="Main Choice">
-                <option value="" disabled selected>Select a main option</option>
-                <option value="Chicken Balmoral">Chicken Balmoral</option>
-                <option value="Fillet of Scottish Salmon">Fillet of Scottish Salmon</option>
-              </select>
-            </div>
-
-            <!-- 5. Dessert Choice -->
-            <div class="form-group">
-              <label for="dessert">Dessert Choice </label>
-              <select id="dessert" name="Dessert Choice">
-                <option value="" disabled selected>Select a dessert option</option>
-                <option value="Vanilla Crème Brûlée">Vanilla Crème Brûlée</option>
-                <option value="Apple Crumble Tart">Apple Crumble Tart</option>
-              </select>
-            </div>
-
-            <!-- 6. Dietary Restrictions -->
-            <div class="form-group">
-              <label for="dietary">Dietary Requirements or Allergies </label>
-              <textarea id="dietary" name="Dietary Needs" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
-            </div>
-
-            <!-- 7. Song Request -->
-            <div class="form-group">
-              <label for="song">Song Request 🎵</label>
-              <input type="text" id="song" name="Song Request" placeholder="What song gets you on the dance floor?">
-            </div>
-
-            <button type="submit" class="btn" style="width: 100%; border-radius: 30px; margin-top: 1rem;">Send RSVP 💌</button>
-          </form>
-        </div>
-      </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott 💍</p>
-      <p>We can't wait to celebrate with you! 🎉</p>
-    </footer>
   </div>
 
+  <!-- PAGE 2: OUR STORY -->
+  <div id="page-our-story" class="tab-page">
+    <section style="text-align: center;">
+      <h2 class="section-title">Our Story 💕</h2>
+      <div class="divider"></div>
+      
+      <img src="Proposal Photo.jpg" alt="Sarah and Scott" style="width: 100%; max-width: 500px; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+      
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+          It all started in first year, sharing a flat as completely strict, sensible, flatmates 🏠. The bulletproof friendship that formed only lasted until one summer night out in Glasgow, where a few drinks and a lot of late-night chatting revealed there might actually be a spark hiding behind the "don't date your flatmates rule"!
+        </p>
+        
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+          Naturally, we did the most rational thing possible and initiated a top-secret romance. Living under the same roof meant playing it completely cool to avoid blowing up the flat dynamics if things went sideways. But after months of sneaking around our own hallway, we finally gave in, and admitted to everyone—and ourselves—that this might be the one! 🥰
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 3: SCHEDULE -->
+  <div id="page-schedule" class="tab-page">
+    <section>
+      <h2 class="section-title">The Big Day!</h2>
+      <div class="divider"></div>
+      <div class="details-grid">
+        <div class="detail-card">
+          <h3>When 📅</h3>
+          <p><strong>Saturday, 28th August 2027</strong></p>
+          <p>Ceremony begins at 1:30 PM ⏱️</p>
+          <p>Carriages at Midnight 🎆</p>
+        </div>
+        <div class="detail-card">
+          <h3>Where 📍</h3>
+          <p><strong>Balbirnie House Hotel</strong></p>
+          <p>Markinch, Glenrothes</p>
+          <p>Fife, KY7 6NE 🏴󠁧󠁢󠁳󠁣󠁴󠁿</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Order of the Day 🎉</h2>
+      <div class="divider"></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">1:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Guest Arrival 🥂</h4>
+            <p>Welcome drinks in the Orangery</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">1:30 PM</div>
+          <div class="timeline-desc">
+            <h4>The Ceremony 💍</h4>
+            <p>Exchanging our vows</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">2:30 PM</div>
+          <div class="timeline-desc">
+            <h4>Drinks & Photographs 📸</h4>
+            <p>Canapés and lawn games</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">5:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Wedding Breakfast </h4>
+            <p>Speeches and delicious food</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">8:00 PM</div>
+          <div class="timeline-desc">
+            <h4>Evening Reception 🕺💃</h4>
+            <p>Dancing & celebrations!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 4: PLACES TO STAY -->
+  <div id="page-places-to-stay" class="tab-page">
+    <section>
+      <h2 class="section-title">Places to Stay 🛌</h2>
+      <div class="divider"></div>
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <p style="margin-bottom: 2rem;">Here are a few recommended accommodation options nearby for your stay:</p>
+        
+        <ul class="stay-list" style="list-style: none; padding: 0; line-height: 2.2; margin-bottom: 2.5rem; font-size: 1.05rem;">
+          <li>🏡 <strong>Laurel Bank, Markinch:</strong> <a href="https://www.laurelbankhotel.co.uk/" target="_blank" rel="noopener">Visit Website</a></li>
+          <li>🏨 <strong>Holiday Inn Express, Glenrothes:</strong> <a href="https://www.ihg.com/holidayinnexpress/hotels/gb/en/glenrothes/glnuk/hoteldetail" target="_blank" rel="noopener">Visit Website</a></li>
+          <li>🏨 <strong>Premier Inn, Glenrothes:</strong> <a href="https://www.premierinn.com/gb/en/hotels/scotland/fife/glenrothes/glenrothes.html" target="_blank" rel="noopener">Visit Website</a></li>
+        </ul>
+
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
+          Travelling in a larger group or looking for extra space? You can check out local homes on <a href="https://www.airbnb.com" target="_blank" rel="noopener">Airbnb 🏠</a> or search for additional options on <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com 🌐</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 5: TRAVEL -->
+  <div id="page-travel" class="tab-page">
+    <section class="travel-box">
+      <h2 class="section-title">Travel & Transport 🚗</h2>
+      <div class="divider"></div>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">By Train 🚆</h3>
+        <p style="margin-bottom: 2rem;">
+          The nearest train station is <strong>Markinch Station</strong>, which has direct links from Edinburgh, Dundee, and Aberdeen. 
+          Balbirnie House is approximately a <strong>15 to 20-minute walk</strong> (around 0.8 miles) through the park grounds from the station 🚶‍♂️🚶‍♀️.
+        </p>
+
+        <h3 style="font-size: 1.8rem; color: var(--sage-dark); margin-bottom: 0.5rem;">Local Taxis 🚕</h3>
+        <p style="margin-bottom: 1rem;">If you prefer to grab a taxi from Markinch Station to Balbirnie, we recommend booking a local Glenrothes taxi in advance:</p>
+        <ul style="list-style: none; padding: 0; line-height: 2.2; font-size: 1.05rem;">
+          <li>🚕 <strong>Glenrothes Taxis:</strong> <a href="tel:01592751111">01592 751111</a></li>
+          <li>🚕 <strong>Deans Taxis:</strong> <a href="tel:01592759000">01592 759000</a></li>
+          <li>🚕 <strong>Kip Taxis:</strong> <a href="tel:01592752222">01592 752222</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 6: MENU -->
+  <div id="page-menu" class="tab-page">
+    <section>
+      <h2 class="section-title">Wedding Menu 🍷</h2>
+      <div class="divider"></div>
+      
+      <div class="menu-card">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">
+          A quick reminder of the choices selected for our wedding meal 🍽️
+        </p>
+
+        <div class="menu-course">
+          <h3>Starters </h3>
+          <p class="menu-option">Roast Tomato & Lentil Soup</p>
+          <p class="menu-or">— or —</p>
+          <p class="menu-option">Duck Liver Parfait</p>
+        </div>
+
+        <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
+
+        <div class="menu-course">
+          <h3>Mains </h3>
+          <p class="menu-option">Chicken Balmoral</p>
+          <p class="menu-or">— or —</p>
+          <p class="menu-option">Fillet of Scottish Salmon</p>
+        </div>
+
+        <div style="width: 40px; height: 1px; background: var(--buttercup); margin: 2rem auto;"></div>
+
+        <div class="menu-course" style="margin-bottom: 0;">
+          <h3>Desserts </h3>
+          <p class="menu-option">Vanilla Crème Brûlée</p>
+          <p class="menu-or">— or —</p>
+          <p class="menu-option">Apple Crumble Tart</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 7: QUESTIONS & ANSWERS (FAQS) -->
+  <div id="page-faqs" class="tab-page">
+    <section>
+      <h2 class="section-title">Questions & Answers </h2>
+      <div class="divider"></div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>What is the bridal party wearing?</h3>
+          <div class="faq-side-by-side">
+            <img src="Bridesmaid Colours.png" alt="Bridesmaid Colours Palette" class="faq-img">
+            <p style="flex: 1;">
+              We are doing a pastel coloured theme with different colours. Please wear wedding attire and colours that you love! ✨
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>🅿️ Is there onsite parking at Balbirnie?</h3>
+          <p>There is plenty of onsite parking with over 200 spaces!</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>☀️ Will the ceremony be indoors or outdoors?</h3>
+          <p>We are hoping for outdoors but it will be decided on the day, based on the weather conditions 🌦️.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>🌙 What time will the wedding end?</h3>
+          <p>The wedding will finish at midnight 🕛🎉!</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>🎁 Is there a gift list?</h3>
+          <p>
+            The greatest gift of all is having you celebrate with us on our big day 💖. We are not setting up a traditional registry. Your presence is truly all we ask for! If you would still like to give something to mark the occasion, a contribution toward our future together would be warmly appreciated 🏡.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 8: RSVP -->
+  <div id="page-rsvp" class="tab-page">
+    <section style="text-align: center;">
+      <h2 class="section-title">RSVP 💌</h2>
+      <div class="divider"></div>
+      
+      <div class="rsvp-card">
+        <!-- Shown if typed name was submitted previously -->
+        <div id="rsvp-status-msg" style="display: none; padding: 2rem; background: var(--cream-bg); border-radius: 12px; border: 1px solid var(--sage-light); text-align: center;">
+          <h3 style="color: var(--sage-dark); font-size: 1.8rem; margin-bottom: 1rem;">Response Received! ✨</h3>
+          <p style="font-size: 1.05rem; color: var(--text-dark); line-height: 1.7;">
+            Your form has already been submitted. If you need to update your attendance information please contact the bride or groom. Please submit your RSVP by 5pm on the 28th of June. 💖
+          </p>
+          <button onclick="resetRsvpView()" class="btn" style="margin-top: 1.5rem; font-size: 0.75rem; padding: 0.5rem 1.5rem;">Submit Another Guest 👥</button>
+        </div>
+
+        <!-- Active Form with Formspree Action & Redirect -->
+        <form id="rsvp-form" action="https://formspree.io/f/xaeqjepz" method="POST" onsubmit="return handleRsvpFormSubmit(event)">
+          <input type="hidden" name="_next" value="https://sarahsjm.github.io/">
+          
+          <p style="margin-bottom: 2rem; color: var(--text-muted);">Please respond by <strong>5pm on 28th June 2027</strong> to help us finalize our arrangements! 🕒<br><em>Please submit one form per guest.</em></p>
+
+          <!-- 1. Guest Name -->
+          <div class="form-group">
+            <label for="guest-name">Full Name 👤</label>
+            <input type="text" id="guest-name" name="Full Name" required placeholder="e.g. Jane Smith" oninput="checkIfNameSubmitted()">
+          </div>
+
+          <!-- 2. Attendance -->
+          <div class="form-group">
+            <label for="attending">Will you be attending? </label>
+            <select id="attending" name="Attendance" required>
+              <option value="" disabled selected>Please select an option</option>
+              <option value="Joyfully Accept">Joyfully Accept 🥳</option>
+              <option value="Regretfully Decline">Regretfully Decline 😢</option>
+            </select>
+          </div>
+
+          <!-- 3. Starter Choice -->
+          <div class="form-group">
+            <label for="starter">Starter Choice </label>
+            <select id="starter" name="Starter Choice">
+              <option value="" disabled selected>Select a starter option</option>
+              <option value="Roast Tomato & Lentil Soup">Roast Tomato & Lentil Soup</option>
+              <option value="Duck Liver Parfait">Duck Liver Parfait</option>
+            </select>
+          </div>
+
+          <!-- 4. Main Choice -->
+          <div class="form-group">
+            <label for="main">Main Choice </label>
+            <select id="main" name="Main Choice">
+              <option value="" disabled selected>Select a main option</option>
+              <option value="Chicken Balmoral">Chicken Balmoral</option>
+              <option value="Fillet of Scottish Salmon">Fillet of Scottish Salmon</option>
+            </select>
+          </div>
+
+          <!-- 5. Dessert Choice -->
+          <div class="form-group">
+            <label for="dessert">Dessert Choice </label>
+            <select id="dessert" name="Dessert Choice">
+              <option value="" disabled selected>Select a dessert option</option>
+              <option value="Vanilla Crème Brûlée">Vanilla Crème Brûlée</option>
+              <option value="Apple Crumble Tart">Apple Crumble Tart</option>
+            </select>
+          </div>
+
+          <!-- 6. Dietary Restrictions -->
+          <div class="form-group">
+            <label for="dietary">Dietary Requirements or Allergies </label>
+            <textarea id="dietary" name="Dietary Needs" rows="3" placeholder="Please list any dietary needs or allergies..."></textarea>
+          </div>
+
+          <!-- 7. Song Request -->
+          <div class="form-group">
+            <label for="song">Song Request 🎵</label>
+            <input type="text" id="song" name="Song Request" placeholder="What song gets you on the dance floor?">
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; border-radius: 30px; margin-top: 1rem;">Send RSVP 💌</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="serif" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sarah & Scott 💍</p>
+    <p>We can't wait to celebrate with you! 🎉</p>
+  </footer>
+
   <script>
-    // --- PASSWORD CHECK LOGIC ---
-    const CORRECT_PASSWORD = "Sarah&Scott2027"; 
+    // --- TAB SWITCHING SYSTEM ---
+    function showTab(tabId) {
+      const pages = document.querySelectorAll('.tab-page');
+      pages.forEach(page => page.classList.remove('active'));
 
-    function checkPassword() {
-      const userInput = document.getElementById("passInput").value;
-      if (userInput === CORRECT_PASSWORD) {
-        document.getElementById("password-overlay").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-        sessionStorage.setItem("wedding_unlocked", "true");
-      } else {
-        document.getElementById("errorMsg").style.display = "block";
+      const links = document.querySelectorAll('.nav-links a');
+      links.forEach(link => link.classList.remove('active'));
+
+      document.getElementById('page-' + tabId).classList.add('active');
+      document.getElementById('nav-' + tabId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- COUNTDOWN TIMER ---
+    const weddingDate = new Date("August 28, 2027 13:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "<p>The Big Day is Here! 🎉</p>";
+        return;
       }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("mins").innerText = String(mins).padStart(2, '0');
+      document.getElementById("secs").innerText = String(secs).padStart(2, '0');
     }
 
-    function handleKeyPress(e) {
-      if (e.key === 'Enter') {
-        checkPassword();
-      }
-    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    if (sessionStorage.getItem("wedding_unlocked") === "true") {
-      document.getElementById("password-overlay").style.display = "none";
-      document.getElementById("main-content").style.display = "block";
-    }
-
-    // Retrieve submitted guest names from localStorage
+    // --- RSVP LOCALSTORAGE / SUBMISSION LOGIC ---
     function getSubmittedNames() {
       const saved = localStorage.getItem("submitted_guest_names");
       return saved ? JSON.parse(saved) : [];
     }
 
-    // Live check as user types their name
     function checkIfNameSubmitted() {
       const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
       const submittedNames = getSubmittedNames();
@@ -928,7 +840,6 @@
       }
     }
 
-    // Save name on form submit
     function handleRsvpFormSubmit(event) {
       const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
       const submittedNames = getSubmittedNames();
@@ -946,55 +857,10 @@
     }
 
     function resetRsvpView() {
-      document.getElementById("guest-name").value = "";
       document.getElementById("rsvp-status-msg").style.display = "none";
+      document.getElementById("rsvp-form").reset();
       document.getElementById("rsvp-form").style.display = "block";
     }
-
-    // --- PAGE / TAB SWITCHER LOGIC ---
-    function showTab(tabId) {
-      const pages = document.querySelectorAll('.tab-page');
-      pages.forEach(page => page.classList.remove('active'));
-
-      const navLinks = document.querySelectorAll('.nav-links a');
-      navLinks.forEach(link => link.classList.remove('active'));
-
-      const selectedPage = document.getElementById('page-' + tabId);
-      if (selectedPage) {
-        selectedPage.classList.add('active');
-      }
-
-      const selectedNav = document.getElementById('nav-' + tabId);
-      if (selectedNav) {
-        selectedNav.classList.add('active');
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // --- COUNTDOWN TIMER LOGIC ---
-    const weddingDate = new Date("August 28, 2027 13:30:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = weddingDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
-      }
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
   </script>
-
 </body>
 </html>
