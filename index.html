@@ -825,13 +825,21 @@
     updateCountdown();
 
     // --- RSVP LOCALSTORAGE / SUBMISSION LOGIC ---
+    function normalizeName(name) {
+      return name
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '') // Removes punctuation like periods or hyphens
+        .replace(/\s+/g, ' ')        // Collapses multiple spaces into a single space
+        .trim();
+    }
+
     function getSubmittedNames() {
       const saved = localStorage.getItem("submitted_guest_names");
       return saved ? JSON.parse(saved) : [];
     }
 
     function checkIfNameSubmitted() {
-      const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
+      const typedName = normalizeName(document.getElementById("guest-name").value);
       const submittedNames = getSubmittedNames();
 
       if (typedName.length > 2 && submittedNames.includes(typedName)) {
@@ -841,7 +849,7 @@
     }
 
     function handleRsvpFormSubmit(event) {
-      const typedName = document.getElementById("guest-name").value.trim().toLowerCase();
+      const typedName = normalizeName(document.getElementById("guest-name").value);
       const submittedNames = getSubmittedNames();
 
       if (submittedNames.includes(typedName)) {
